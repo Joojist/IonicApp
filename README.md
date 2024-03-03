@@ -58,4 +58,3 @@ When running the app with `ionic serve`, it runs in a browser environment by def
 ## Contributing
 
 If you'd like to contribute to this project, feel free to fork the repository and submit a pull request with your changes. Contributions are welcome!
-```
