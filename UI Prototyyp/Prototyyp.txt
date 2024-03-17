@@ -1,0 +1,8 @@
+Meie äpiideeks on Travel-Diary laadne asi. See koosneb kaardist, millelt on näha külastatud paigad, päevikust, 'bucket listist' ja reisistatistikast/ajaloost (näha, mitmes
+riigis oled käinud ja mis maailmajaos kõige sagedamini reisinud oled).
+
+UI PROTOTÜÜP:
+- Avage preview.html fail
+- UI on interaktiivne ja nupud on reactive.
+
+Alpha v1.0
