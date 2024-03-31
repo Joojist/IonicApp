@@ -33,7 +33,7 @@
     "@ionic-native/media-capture": "^5.36.0",
     "@ionic/angular": "^7.0.0",
     "ionicons": "^7.0.0",
-    "rxjs": "~7.8.0",
+    "rxjs": "6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
