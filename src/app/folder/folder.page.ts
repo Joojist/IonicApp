@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Plugins, Capacitor } from '@capacitor/core';
-
-const { Permissions, MediaRecorder } = Plugins;
+import { VoiceRecorder } from 'capacitor-voice-recorder';
 
 @Component({
   selector: 'app-folder',
@@ -12,7 +10,6 @@ const { Permissions, MediaRecorder } = Plugins;
 export class FolderPage implements OnInit {
   public folder: string = '';
   public recording: boolean = false;
-  private mediaRecorder: any; // MediaRecorder object
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
@@ -30,37 +27,41 @@ export class FolderPage implements OnInit {
   }
 
   async startRecording() {
-    if (Capacitor.isNative) {
-      const permissionResult = await Permissions['requestPermission']('microphone');
-      if (permissionResult.state !== 'granted') {
-        console.error('Microphone permission not granted');
-        return;
-      }
-    }
-
     try {
-      this.mediaRecorder = await MediaRecorder['create']();
-      const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.mediaRecorder.start(audioStream);
+      console.log('Requesting microphone permission...');
+      const permissionResult = await VoiceRecorder.requestAudioRecordingPermission();
+  
+      if (permissionResult.value) {
+        console.log('Microphone permission granted');
+        console.log('Attempting to start recording...');
+        const recordingResult = await VoiceRecorder.startRecording();
+  
+        if (recordingResult.value) {
+          console.log('Recording started successfully');
+        } else {
+          console.error('Error starting recording:', recordingResult);
+        }
+      } else {
+        console.error('Microphone permission not granted');
+      }
     } catch (error) {
       console.error('Error starting recording:', error);
     }
   }
-
+  
   async stopRecording() {
     try {
-      await this.mediaRecorder.stop();
-      const blob = await this.mediaRecorder.getAudio();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'recording.wav'; // Change file name and format if needed
-      document.body.appendChild(a);
-      a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      console.log('Attempting to stop recording...');
+      const recordingResult = await VoiceRecorder.stopRecording();
+  
+      if (recordingResult.value) {
+        console.log('Recording stopped successfully');
+      } else {
+        console.error('Error stopping recording:', recordingResult);
+      }
     } catch (error) {
       console.error('Error stopping recording:', error);
     }
   }
+    
 }
