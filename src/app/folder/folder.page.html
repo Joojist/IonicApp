@@ -14,7 +14,7 @@
     </ion-toolbar>
   </ion-header>
   <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
+    <strong class="capitalize" *ngIf="folder !== 'Gallery'">{{ folder }}</strong>
     <br>
     <br>
     <ion-button *ngIf="folder === 'Records'" (click)="toggleRecording()">
@@ -22,3 +22,31 @@
     </ion-button>
   </div>
 </ion-content>
+
+  <ion-content *ngIf="folder === 'Gallery'">
+    <h3 *ngIf="images.length == 0" class="ion-padding ion-text-center">Choose an image</h3>
+
+    <ion-list>
+      <ion-item *ngFor="let file of images; let i = index">
+        <ion-thumbnail slot="start">
+          <ion-img [src]="file.data"></ion-img>
+        </ion-thumbnail>
+        <ion-label class="ion-text-wrap"> {{ file.name }} </ion-label>
+        <ion-button slot="end" fill="clear" (click)="startUpload(file)">
+          <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+        </ion-button>
+        <ion-button slot="end" fill="clear" (click)="deleteImage(file)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+<ion-footer *ngIf="folder === 'Gallery'">
+	<ion-toolbar color="primary">
+		<ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
+			<ion-icon slot="start" name="camera"></ion-icon>
+			Select Image
+		</ion-button>
+	</ion-toolbar>
+</ion-footer>
