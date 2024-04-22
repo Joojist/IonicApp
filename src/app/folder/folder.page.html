@@ -42,6 +42,10 @@
     </ion-list>
   </ion-content>
 
+  <ion-content *ngIf="folder === 'Augmented Reality'">
+    <iframe src="/assets/aframe-ar.html"></iframe>
+  </ion-content>
+
 <ion-footer *ngIf="folder === 'Gallery'">
 	<ion-toolbar color="primary">
 		<ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
