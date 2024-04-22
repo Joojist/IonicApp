@@ -17,6 +17,7 @@ export class AppComponent {
     },
     { title: 'Gallery', url: '/folder/Gallery', icon: 'camera' },
     { title: 'Records', url: '/folder/Records', icon: 'mic' },
+    { title: 'Augmented Reality', url: '/folder/Augmented Reality', icon: 'scan-circle' },
   ];
 
   public currentTab: string = 'Inbox';
