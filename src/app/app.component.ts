@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public appPages = [
     { title: 'My Journal', url: '/folder/Journal', icon: 'book' },
-    { title: 'Travel Map', url: '/folder/Travel Map', icon: 'map' },
     { title: 'Bucket List', url: '/folder/Bucket List', icon: 'list' },
     {
       title: 'My Travel Statistics',
@@ -17,7 +16,11 @@ export class AppComponent {
     },
     { title: 'Gallery', url: '/folder/Gallery', icon: 'camera' },
     { title: 'Records', url: '/folder/Records', icon: 'mic' },
-    { title: 'Augmented Reality', url: '/folder/Augmented Reality', icon: 'scan-circle' },
+    {
+      title: 'Augmented Reality',
+      url: '/folder/Augmented Reality',
+      icon: 'scan-circle',
+    },
   ];
 
   public currentTab: string = 'Inbox';
@@ -25,6 +28,7 @@ export class AppComponent {
   constructor() {}
 
   setCurrentTab(tab: string) {
+    console.log(`Tab pressed: ${tab}`);
     this.currentTab = tab;
   }
 }
