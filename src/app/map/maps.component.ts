@@ -6,19 +6,19 @@ import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
   styleUrls: ['./maps.component.scss'],
 })
 export class MapsComponent implements AfterViewInit {
-  @ViewChild('map') mapElement!: ElementRef; // Reference to the map container
-  map!: google.maps.Map; // Google Map instance
+  @ViewChild('map') mapElement!: ElementRef;
+  map!: google.maps.Map;
 
   ngAfterViewInit() {
-    this.loadMap(); // Initialize the map after the view is ready
+    this.loadMap();
   }
 
   loadMap() {
     const mapOptions = {
-      center: { lat: 59.4370, lng: 24.7536 }, // Initial coordinates
-      zoom: 8, // Initial zoom level
+      center: { lat: 59.437, lng: 24.7536 },
+      zoom: 8,
     };
 
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions); // Create the map
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
   }
 }
