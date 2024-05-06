@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+#map {
+  height: 100%;
+  border: 1px solid var(--ion-color-step-150, #d7d8da);
+}
+
+ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+
+}
