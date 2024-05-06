@@ -12,11 +12,11 @@
     <ion-card-content>
       <ion-item>
         <ion-label position="stacked">My name is:</ion-label>
-        <ion-input type="text" [(ngModel)]="item.name"></ion-input>
+        <ion-input placeholder="Enter your name" type="text" [(ngModel)]="item.name"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Age</ion-label>
-        <ion-input type="number" [(ngModel)]="item.age"></ion-input>
+        <ion-input placeholder="Enter your age" type="number" [(ngModel)]="item.age"></ion-input>
       </ion-item>
       <ion-button (click)="saveItem()">Save</ion-button>
       <ion-button (click)="reset()">Reset</ion-button>

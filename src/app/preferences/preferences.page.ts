@@ -20,8 +20,8 @@ export class PreferencesPage implements OnInit {
 
   constructor() {
     this.item = {
-      name: 'Enter name',
-      age: 0
+      name: '',
+      age: NaN
     }
     this.darkMode = false;
   }
@@ -64,8 +64,8 @@ export class PreferencesPage implements OnInit {
 
   reset() {
     this.item = {
-      name: 'Enter name',
-      age: 0
+      name: '',
+      age: NaN
     }
     this.saveItem();
   }
