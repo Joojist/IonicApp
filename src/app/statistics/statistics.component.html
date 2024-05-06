@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Statistics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="message">
+    <ion-card-header>
+      <ion-card-title>Welcome Message</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ message }}
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Form to send a message to the backend -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Send a Message</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Your Message</ion-label>
+        <ion-input [(ngModel)]="userMessage"></ion-input> <!-- Two-way binding -->
+      </ion-item>
+      <ion-button expand="full" (click)="sendMessage()">Send</ion-button> <!-- Send button -->
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Display the response from the backend -->
+  <ion-card *ngIf="responseMessage">
+    <ion-card-header>
+      <ion-card-title>Response</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ responseMessage }} <!-- Display response message -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>
