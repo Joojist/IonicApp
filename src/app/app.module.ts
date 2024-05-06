@@ -9,9 +9,11 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { GoogleMapComponent } from './google-map-component/google-map.component';
 import { MapsComponent } from './map/maps.component';
 import { CommonModule } from '@angular/common';
+import {StatisticsComponent} from "./statistics/statistics.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  declarations: [AppComponent, GoogleMapComponent, MapsComponent],
+  declarations: [AppComponent, GoogleMapComponent, MapsComponent, StatisticsComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -19,6 +21,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     GoogleMapsModule,
     CommonModule,
+    FormsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
