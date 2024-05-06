@@ -6,59 +6,67 @@ import { Preferences } from '@capacitor/preferences';
   templateUrl: './preferences.page.html',
   styleUrls: ['./preferences.page.scss'],
 })
-export class PreferencesPage {
+export class PreferencesPage implements OnInit {
 
-  private KEY_PRODUCT = 'product';
+  private KEY_ITEM = 'item';
+  private KEY_DARK_MODE = 'darkModeActivated';
 
-  public product: {
+  public item: {
     name: string,
-    quantity: number
+    age: number
   }
+
+  public darkMode: boolean;
 
   constructor() {
-    this.product = {
-      name: '1',
-      quantity: 0
+    this.item = {
+      name: 'Enter name',
+      age: 0
     }
+    this.darkMode = false;
   }
 
-  async ionViewWillEnter() {
+  ngOnInit(): void {
+    this.loadItem();
+    this.checkAppMode();
+  }
 
-    const product = await Preferences.get({
-      key: this.KEY_PRODUCT
+  async loadItem() {
+    const item = await Preferences.get({
+      key: this.KEY_ITEM
     });
 
-    if (!product.value) {
-      this.saveProduct();
+    if (!item.value) {
+      this.saveItem();
     } else {
-      this.product = JSON.parse(product.value);
+      this.item = JSON.parse(item.value);
     }
-
   }
 
-  decrement() {
-    this.product.quantity--;
-    this.saveProduct();
+  async saveItem() {
+    await Preferences.set({
+      key: this.KEY_ITEM,
+      value: JSON.stringify(this.item)
+    });
   }
 
-  increment() {
-    this.product.quantity++;
-    this.saveProduct();
+  async checkAppMode() {
+    const checkIsDarkMode = await Preferences.get({key: this.KEY_DARK_MODE});
+    this.darkMode = checkIsDarkMode?.value === 'true';
+    document.body.classList.toggle('dark', this.darkMode);
+  }
+
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    document.body.classList.toggle('dark', this.darkMode);
+    Preferences.set({key: this.KEY_DARK_MODE, value: this.darkMode.toString()});
   }
 
   reset() {
-    this.product = {
-      name: '1',
-      quantity: 0
+    this.item = {
+      name: 'Enter name',
+      age: 0
     }
-    this.saveProduct();
+    this.saveItem();
   }
-
-  async saveProduct() {
-    await Preferences.set({
-      key: this.KEY_PRODUCT,
-      value: JSON.stringify(this.product)
-    });
-  }
-
 }
