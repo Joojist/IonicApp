@@ -5,7 +5,7 @@ import { MapsComponent } from './map/maps.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'folder/Journal',
     pathMatch: 'full',
   },
   {
@@ -13,7 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./folder/folder.module').then((m) => m.FolderPageModule),
   },
-  { path: 'travel-map', component: MapsComponent },
+  { path: 'travel-map', component: MapsComponent },  {
+    path: 'preferences',
+    loadChildren: () => import('./preferences/preferences.module').then( m => m.PreferencesPageModule)
+  },
+
 ];
 
 @NgModule({

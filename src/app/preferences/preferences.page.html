@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Preferences</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+  <ion-item>
+    <ion-select id="select" (ionChange)="saveProduct()" [(ngModel)]="product.name">
+      <ion-select-option value="1">Plane</ion-select-option>
+      <ion-select-option value="2">Bus</ion-select-option>
+      <ion-select-option value="3">Ferry</ion-select-option>
+      <ion-select-option value="4">Bicycle</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item >
+    <ion-label>My lucky number: </ion-label>
+    <ion-button (click)="decrement()">-</ion-button>
+    <ion-text>{{product.quantity}}</ion-text>
+    <ion-button (click)="increment()">+</ion-button>
+  </ion-item>
+
+  <ion-button (click)="reset()">Reset saved data</ion-button>
+</div>
+
+</ion-content>

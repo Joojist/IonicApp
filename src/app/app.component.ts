@@ -21,6 +21,7 @@ export class AppComponent {
       url: '/folder/Augmented Reality',
       icon: 'scan-circle',
     },
+    { title: 'Preferences', url: '/preferences', icon: 'options' },
   ];
 
   public currentTab: string = 'Inbox';
