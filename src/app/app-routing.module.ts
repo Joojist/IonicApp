@@ -1,35 +1,30 @@
-import { Component } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { MapsComponent } from './map/maps.component';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'folder/Journal',
+    pathMatch: 'full',
+  },
+  {
+    path: 'folder/:id',
+    loadChildren: () =>
+      import('./folder/folder.module').then((m) => m.FolderPageModule),
+  },
+  { path: 'travel-map', component: MapsComponent },
+  {
+    path: 'preferences',
+    loadChildren: () => import('./preferences/preferences.module').then( m => m.PreferencesPageModule)
+  },
+
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
+  exports: [RouterModule],
 })
-export class AppComponent {
-  public appPages = [
-    { title: 'My Journal', url: '/folder/Journal', icon: 'book' },
-    { title: 'Bucket List', url: '/folder/Bucket List', icon: 'list' },
-    {
-      title: 'My Travel Statistics',
-      url: '/folder/Travel Stats',
-      icon: 'stats-chart',
-    },
-    { title: 'Gallery', url: '/folder/Gallery', icon: 'camera' },
-    { title: 'Records', url: '/folder/Records', icon: 'mic' },
-    {
-      title: 'Augmented Reality',
-      url: '/folder/Augmented Reality',
-      icon: 'scan-circle',
-    },
-    { title: 'Preferences', url: '/preferences', icon: 'options' },
-  ];
-
-  public currentTab: string = 'Inbox';
-
-  constructor() {}
-
-  setCurrentTab(tab: string) {
-    console.log(`Tab pressed: ${tab}`);
-    this.currentTab = tab;
-  }
-}
+export class AppRoutingModule {}
