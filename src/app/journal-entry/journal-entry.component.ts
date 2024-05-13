@@ -71,10 +71,13 @@ export class JournalEntryComponent {
 
   toggleContent(entry: { title: string, content: string, pictures: { url: string, uploaded: boolean }[], expanded: boolean }) {
     if (!this.deleteMode) {
+      console.log('Before toggle:', entry.expanded);
       entry.expanded = !entry.expanded;
+      console.log('After toggle:', entry.expanded);
       this.saveEntries();
     }
-  }
+}
+
   
   toggleDeleteMode() {
     this.deleteMode = !this.deleteMode;

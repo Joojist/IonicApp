@@ -29,10 +29,10 @@
       {{ entry.content }}
       <!-- Display pictures for the entry -->
       <ion-row>
-        <ion-col size="6" *ngFor="let pictureUrl of entry.pictures">
-          <ion-img [src]="pictureUrl"></ion-img>
+        <ion-col size="6" *ngFor="let picture of entry.pictures">
+          <ion-img [src]="picture.url"></ion-img>
         </ion-col>
-      </ion-row>
+      </ion-row>      
     </ion-card-content>
   </ion-card>  
 
