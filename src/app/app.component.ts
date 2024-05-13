@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,19 @@ export class AppComponent {
   ];
 
   public currentTab: string = 'Inbox';
+  public darkMode: boolean = false;
 
   constructor() {}
+
+  ngOnInit(): void {
+    this.loadDarkMode(); 
+  }
+
+  async loadDarkMode() { 
+    const checkIsDarkMode = await Preferences.get({ key: 'darkModeActivated' });
+    this.darkMode = checkIsDarkMode?.value === 'true';
+    document.body.classList.toggle('dark', this.darkMode);
+  }
 
   setCurrentTab(tab: string) {
     console.log(`Tab pressed: ${tab}`);
