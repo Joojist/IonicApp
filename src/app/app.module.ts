@@ -9,12 +9,20 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { GoogleMapComponent } from './google-map-component/google-map.component';
 import { MapsComponent } from './map/maps.component';
 import { CommonModule } from '@angular/common';
-import {StatisticsComponent} from "./statistics/statistics.component";
-import {FormsModule} from "@angular/forms";
+import { StatisticsComponent } from './statistics/statistics.component';
+import { FormsModule } from '@angular/forms';
 import { BucketListComponent } from './bucket-list/bucket-list.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
-  declarations: [AppComponent, GoogleMapComponent, MapsComponent, StatisticsComponent, BucketListComponent],
+  declarations: [
+    AppComponent,
+    GoogleMapComponent,
+    MapsComponent,
+    StatisticsComponent,
+    BucketListComponent,
+    GalleryComponent,
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

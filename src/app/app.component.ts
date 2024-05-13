@@ -10,7 +10,7 @@ export class AppComponent {
   public appPages = [
     { title: 'My Journal', url: '/folder/Journal', icon: 'book' },
     { title: 'Bucket List', url: '/bucket-list', icon: 'list' },
-    { title: 'Gallery', url: '/folder/Gallery', icon: 'camera' },
+    { title: 'Gallery', url: '/gallery', icon: 'camera' },
     { title: 'Records', url: '/folder/Records', icon: 'mic' },
     {
       title: 'Augmented Reality',
@@ -26,10 +26,10 @@ export class AppComponent {
   constructor() {}
 
   ngOnInit(): void {
-    this.loadDarkMode(); 
+    this.loadDarkMode();
   }
 
-  async loadDarkMode() { 
+  async loadDarkMode() {
     const checkIsDarkMode = await Preferences.get({ key: 'darkModeActivated' });
     this.darkMode = checkIsDarkMode?.value === 'true';
     document.body.classList.toggle('dark', this.darkMode);
