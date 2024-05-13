@@ -77,7 +77,6 @@ export class JournalEntryComponent {
       this.saveEntries();
     }
 }
-
   
   toggleDeleteMode() {
     this.deleteMode = !this.deleteMode;
