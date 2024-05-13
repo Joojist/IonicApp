@@ -4,6 +4,12 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>My Journal</ion-title>
+    <!-- Toggle delete mode button -->
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleDeleteMode()">
+        {{ deleteMode ? 'Cancel' : 'Delete' }}
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +17,13 @@
   <!-- Show existing journal entries -->
   <ion-card *ngFor="let entry of journalEntries">
     <ion-card-header (click)="toggleContent(entry)">
+      <!-- Checkbox for multi-select delete -->
+      <ion-checkbox *ngIf="deleteMode" [(ngModel)]="entry.selected"></ion-checkbox>
       <ion-card-title>{{ entry.title }}</ion-card-title>
+      <!-- Delete button -->
+      <ion-button slot="end" fill="clear" color="danger" *ngIf="!deleteMode" (click)="deleteEntry(entry)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
     </ion-card-header>
     <ion-card-content *ngIf="entry.expanded">
       {{ entry.content }}
@@ -22,7 +34,7 @@
         </ion-col>
       </ion-row>
     </ion-card-content>
-  </ion-card>
+  </ion-card>  
 
   <!-- Add new journal entry form -->
   <ion-item *ngIf="showNewEntryForm">
@@ -39,4 +51,7 @@
 
   <!-- Button to toggle new entry form -->
   <ion-button expand="block" (click)="toggleNewEntryForm()">Add New Entry</ion-button>
+
+  <!-- Delete selected entries button -->
+  <ion-button *ngIf="deleteMode" expand="block" (click)="deleteSelectedEntries()">Delete Selected Entries</ion-button>
 </ion-content>

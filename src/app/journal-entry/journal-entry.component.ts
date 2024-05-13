@@ -9,11 +9,12 @@ import { CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./journal-entry.component.scss'],
 })
 export class JournalEntryComponent {
-  journalEntries: { title: string, content: string, pictures: { url: string, uploaded: boolean }[], expanded: boolean }[] = [];
+  journalEntries: { title: string, content: string, pictures: { url: string, uploaded: boolean }[], expanded: boolean, selected: boolean }[] = [];
   newEntryTitle: string = '';
   newEntryContent: string = '';
   newEntryPictures: { url: string, uploaded: boolean }[] = [];
   showNewEntryForm: boolean = false;
+  deleteMode: boolean = false;
 
   constructor() {
     // Load journal entries from local storage
@@ -53,7 +54,8 @@ export class JournalEntryComponent {
       title: this.newEntryTitle,
       content: this.newEntryContent,
       pictures: this.newEntryPictures,
-      expanded: false
+      expanded: false,
+      selected: false  // Add selected property for multi-select delete
     };
     this.journalEntries.push(newEntry);
     this.saveEntries();
@@ -68,8 +70,32 @@ export class JournalEntryComponent {
   }
 
   toggleContent(entry: { title: string, content: string, pictures: { url: string, uploaded: boolean }[], expanded: boolean }) {
-    // Toggle the expanded state of the journal entry content
-    entry.expanded = !entry.expanded;
+    if (!this.deleteMode) {
+      entry.expanded = !entry.expanded;
+      this.saveEntries();
+    }
+  }
+  
+  toggleDeleteMode() {
+    this.deleteMode = !this.deleteMode;
+    // Reset all entry selections when exiting delete mode
+    if (!this.deleteMode) {
+      this.journalEntries.forEach(entry => entry.selected = false);
+    }
+  }
+  
+  deleteEntry(entry: any) {
+    const index = this.journalEntries.indexOf(entry);
+    if (index !== -1) {
+      this.journalEntries.splice(index, 1);
+      this.saveEntries();
+    }
+  }
+  
+  deleteSelectedEntries() {
+    // Filter out selected entries and remove them from the array
+    this.journalEntries = this.journalEntries.filter(entry => !entry.selected);
     this.saveEntries();
   }
+  
 }
