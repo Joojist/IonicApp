@@ -12,9 +12,10 @@ import { CommonModule } from '@angular/common';
 import {StatisticsComponent} from "./statistics/statistics.component";
 import {FormsModule} from "@angular/forms";
 import { BucketListComponent } from './bucket-list/bucket-list.component';
+import { JournalEntryComponent } from './journal-entry/journal-entry.component';
 
 @NgModule({
-  declarations: [AppComponent, GoogleMapComponent, MapsComponent, StatisticsComponent, BucketListComponent],
+  declarations: [AppComponent, GoogleMapComponent, MapsComponent, StatisticsComponent, BucketListComponent, JournalEntryComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

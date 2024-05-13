@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My Journal entries</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Title</ion-label>
+    <ion-input type="text" [(ngModel)]="entryTitle"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Content</ion-label>
+    <ion-textarea rows="6" [(ngModel)]="entryContent"></ion-textarea>
+  </ion-item>
+
+  <!-- Add picture upload functionality -->
+  <!-- Implement file picker or camera functionality here -->
+
+  <ion-button expand="block" (click)="submitEntry()">Submit</ion-button>
+</ion-content>

@@ -3,12 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { MapsComponent } from './map/maps.component';
 import {StatisticsComponent} from "./statistics/statistics.component";
 import { BucketListComponent } from './bucket-list/bucket-list.component';
+import { JournalEntryComponent } from './journal-entry/journal-entry.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'folder/Journal',
-    pathMatch: 'full',
+  { 
+    path: 'journal-entry',
+    component: JournalEntryComponent
   },
   {
     path: 'folder/:id',

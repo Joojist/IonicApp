@@ -8,7 +8,7 @@ import { Preferences } from '@capacitor/preferences';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'My Journal', url: '/folder/Journal', icon: 'book' },
+    { title: 'My Journal', url: '/journal-entry', icon: 'book' },
     { title: 'Bucket List', url: '/bucket-list', icon: 'list' },
     { title: 'Gallery', url: '/folder/Gallery', icon: 'camera' },
     { title: 'Records', url: '/folder/Records', icon: 'mic' },
