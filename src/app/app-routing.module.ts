@@ -6,6 +6,11 @@ import { BucketListComponent } from './bucket-list/bucket-list.component';
 import { JournalEntryComponent } from './journal-entry/journal-entry.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: "journal-entry",
+    pathMatch: 'full'
+  },
   { 
     path: 'journal-entry',
     component: JournalEntryComponent
