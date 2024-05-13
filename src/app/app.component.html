@@ -31,12 +31,12 @@
             <ion-item
               routerDirection="root"
               [routerLink]="['/stats']"
-            lines="none"
-            detail="false"
-            (click)="setCurrentTab('Statistics')"
+              lines="none"
+              detail="false"
+              (click)="setCurrentTab('Statistics')"
             >
-            <ion-icon slot="start" name="stats-chart-outline"></ion-icon>
-            <ion-label>Statistics</ion-label>
+              <ion-icon slot="start" name="stats-chart-outline"></ion-icon>
+              <ion-label>Statistics</ion-label>
             </ion-item>
           </ion-menu-toggle>
 
@@ -45,7 +45,6 @@
               <ion-icon slot="start" name="map-outline"></ion-icon>
               <ion-label>Travel Map</ion-label>
             </ion-item>
-
           </ion-menu-toggle>
         </ion-list>
       </ion-content>

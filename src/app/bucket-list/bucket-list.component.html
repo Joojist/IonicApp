@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Bucket List</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list lines="full">
+      <ion-item *ngFor="let item of bucketListItems; let i = index">
+        <ion-label>{{ item.name }}</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="item.checked" (ionChange)="updateBucketList()"></ion-checkbox>
+        <ion-button slot="end" (click)="deleteItem(i)">Delete</ion-button>
+      </ion-item>
+    </ion-list>
+  
+    <ion-item>
+      <ion-input placeholder="Add new item" [(ngModel)]="newItem"></ion-input>
+      <ion-button slot="end" (click)="addItem()">Add</ion-button>
+    </ion-item>
+  </ion-content>  

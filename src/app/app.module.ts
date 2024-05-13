@@ -11,9 +11,10 @@ import { MapsComponent } from './map/maps.component';
 import { CommonModule } from '@angular/common';
 import {StatisticsComponent} from "./statistics/statistics.component";
 import {FormsModule} from "@angular/forms";
+import { BucketListComponent } from './bucket-list/bucket-list.component';
 
 @NgModule({
-  declarations: [AppComponent, GoogleMapComponent, MapsComponent, StatisticsComponent],
+  declarations: [AppComponent, GoogleMapComponent, MapsComponent, StatisticsComponent, BucketListComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
